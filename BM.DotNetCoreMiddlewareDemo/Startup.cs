@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BM.DotNetCoreMiddlewareDemo.Middleware;
 using Microsoft.AspNetCore.Http;
 
 namespace BM.DotNetCoreMiddlewareDemo
@@ -43,6 +44,8 @@ namespace BM.DotNetCoreMiddlewareDemo
                 await context.Response.WriteAsync("My custom middleware 2 \n");
                 await next();
             });
+
+            app.UseCustomLogicMiddleware();
 
             if (env.IsDevelopment())
             {
