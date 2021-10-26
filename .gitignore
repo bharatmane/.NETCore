@@ -3,3 +3,5 @@
 ################################################################################
 
 /BM.DotNetCoreMiddlewareDemo/.vs/BM.DotNetCoreMiddlewareDemo
+/BM.DotNetCoreMiddlewareDemo/obj
+/BM.DotNetCoreMiddlewareDemo/bin/Debug/netcoreapp3.1
