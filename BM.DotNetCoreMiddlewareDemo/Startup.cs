@@ -32,16 +32,9 @@ namespace BM.DotNetCoreMiddlewareDemo
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
             app.Use(async (context, next) =>
             {
                 await context.Response.WriteAsync("My custom middleware 1 \n");
-                await next();
-            });
-
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("My custom middleware 2 \n");
                 await next();
             });
 
@@ -54,15 +47,12 @@ namespace BM.DotNetCoreMiddlewareDemo
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
