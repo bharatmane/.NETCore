@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BM.BookStore.Data
+namespace BM.BookStore.Models
 {
-    public class Language
+    public class GalleryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-
-        public ICollection<Book> Books { get; set; }
+        public string URL { get; set; }
     }
 }
