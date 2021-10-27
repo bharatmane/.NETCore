@@ -10,10 +10,10 @@ namespace BM.BookStore.Controllers
 {
     public class BookController : Controller
     {
-        private readonly BookRepository _bookRepository = null;
+        private readonly IBookRepository _bookRepository = null;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookController(BookRepository bookRepository,
+        public BookController(IBookRepository bookRepository,
             IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;

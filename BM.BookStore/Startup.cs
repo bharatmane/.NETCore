@@ -32,7 +32,7 @@ namespace BM.BookStore
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddScoped<BookRepository, BookRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
