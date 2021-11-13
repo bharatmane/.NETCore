@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks.Dataflow;
 
 namespace BM.CoAndContraVarianceDemo
 {
@@ -35,7 +38,7 @@ namespace BM.CoAndContraVarianceDemo
         public static void Fly(Bird bird) => bird.Fly();
 
         //For covariance with Generics
-        internal interface IProcess<T>
+        internal interface IProcess<out T>
         {
             T Process();
         }
@@ -85,6 +88,16 @@ namespace BM.CoAndContraVarianceDemo
             IProcess<Bird> birdProcess = new AnimalProcess<Bird>();
 
             //animalProcess = birdProcess;            //by default it won't work
+            //However, once we add out keyword to interface deceleration IProcess<out T>, it works
+            animalProcess = birdProcess;
+
+            IEnumerable<Animal> animalList = new List<Bird>();  //valid
+
+            
+
+
+
+
 
 
 
