@@ -34,6 +34,19 @@ namespace BM.CoAndContraVarianceDemo
         public static void Eat(Animal animal) => animal.Eat();
         public static void Fly(Bird bird) => bird.Fly();
 
+        //For covariance with Generics
+        internal interface IProcess<T>
+        {
+            T Process();
+        }
+
+        public class AnimalProcess<T>:IProcess<T>
+        {
+            public T Process()
+            {
+                throw new NotImplementedException();
+            }
+        }
         static void Main(string[] args)
         {
             //1. Covariance with Delegates : Preserves the assignment compatibility
@@ -67,8 +80,15 @@ namespace BM.CoAndContraVarianceDemo
             animals[0] = new Human();                 //no compilation error, but runtime
 
 
-            
-            
+            //4. Covariance with Generics
+            IProcess<Animal> animalProcess = new AnimalProcess<Animal>();
+            IProcess<Bird> birdProcess = new AnimalProcess<Bird>();
+
+            //animalProcess = birdProcess;            //by default it won't work
+
+
+
+
 
 
 
