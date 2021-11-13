@@ -11,6 +11,11 @@ namespace BM.CoAndContraVarianceDemo
         public void Fly() => Console.Write("Fly");
     }
 
+    public class Human : Animal
+    {
+        public void Think() => Console.Write("Think");
+    }
+
     //For covariance with delegates
     internal delegate Animal ReturnAnimalDelegate();
     internal delegate Bird ReturnBirdDelegate();
@@ -52,6 +57,18 @@ namespace BM.CoAndContraVarianceDemo
             //TakeAnimalDelegate taDelegate1 = Fly;   //invalid
             //taDelegate1(new Animal());              //invalid
 
+            //3. Covariance with arrays
+            Animal[] animals = new Bird[10];          //valid
+
+            //However, there's slit glitch here, if we assign animal array's
+            //one of the element with Human class which is also derived from animal
+            //we may not get compilation error but we would have runtime error
+            //System.ArrayTypeMismatchException
+            animals[0] = new Human();                 //no compilation error, but runtime
+
+
+            
+            
 
 
 
