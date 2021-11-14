@@ -52,7 +52,7 @@ namespace BM.CoAndContraVarianceDemo
             }
         }
 
-        internal interface IZoo<T>
+        internal interface IZoo<in T>
         {
             void Add(T t);
         }
@@ -116,19 +116,9 @@ namespace BM.CoAndContraVarianceDemo
             birdZoo.Add(new Bird());
 
             //this won't work as birdzoo can't have animals that are other than birds
-            //birdZoo = animalZoo;              //invalid
+            //birdZoo = animalZoo;              //invalid with IZoo<T> 
 
-
-
-
-
-
-
-
-
-
-
-
+            birdZoo = animalZoo;              //valid with IZoo<in T> 
 
         }
     }
