@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks.Dataflow;
 
 namespace BM.CoAndContraVarianceDemo
@@ -50,6 +51,20 @@ namespace BM.CoAndContraVarianceDemo
                 throw new NotImplementedException();
             }
         }
+
+        internal interface IZoo<T>
+        {
+            void Add(T t);
+        }
+
+        internal class Zoo<T>:IZoo<T>
+        {
+            public void Add(T t)
+            {
+                //Log goes here
+            }
+        }
+
         static void Main(string[] args)
         {
             //1. Covariance with Delegates : Preserves the assignment compatibility
@@ -93,7 +108,16 @@ namespace BM.CoAndContraVarianceDemo
 
             IEnumerable<Animal> animalList = new List<Bird>();  //valid
 
-            
+            //5. contra Variance with Generics
+            IZoo<Animal> animalZoo= new Zoo<Animal>();
+            animalZoo.Add(new Animal());
+
+            IZoo<Bird> birdZoo = new Zoo<Bird>();
+            birdZoo.Add(new Bird());
+
+            //this won't work as birdzoo can't have animals that are other than birds
+            //birdZoo = animalZoo;              //invalid
+
 
 
 
